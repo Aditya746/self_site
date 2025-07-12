@@ -802,18 +802,32 @@ input:focus, textarea:focus {
   display: inline-block;
 }
 
-.credential-id {
-  color: #888;
-  font-size: 0.75rem;
-  font-weight: 400;
-  display: block;
-  margin-top: 0.5rem;
-  font-family: 'Courier New', monospace;
-  background: #222;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  display: inline-block;
-  border: 1px solid #444;
+.credential-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 0.75rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.credential-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.credential-link i {
+  font-size: 0.8rem;
 }
 
 .timeline-content p {
