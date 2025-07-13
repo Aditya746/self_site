@@ -128,6 +128,7 @@ class WebsiteEnhancer {
   setupHamburgerMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const backBtn = document.querySelector('.back-btn');
     
     if (!hamburger || !navMenu) return;
 
@@ -139,6 +140,18 @@ class WebsiteEnhancer {
       const isOpen = navMenu.classList.contains('open');
       hamburger.setAttribute('aria-expanded', isOpen);
       navMenu.setAttribute('aria-hidden', !isOpen);
+      
+      // Hide/show back button when menu is open/closed
+      if (backBtn) {
+        if (isOpen) {
+          backBtn.style.opacity = '0';
+          backBtn.style.pointerEvents = 'none';
+          backBtn.style.transition = 'opacity 0.3s ease';
+        } else {
+          backBtn.style.opacity = '1';
+          backBtn.style.pointerEvents = 'auto';
+        }
+      }
     };
 
     // Click handler
@@ -159,6 +172,12 @@ class WebsiteEnhancer {
         navMenu.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
         navMenu.setAttribute('aria-hidden', 'true');
+        
+        // Show back button when menu is closed
+        if (backBtn) {
+          backBtn.style.opacity = '1';
+          backBtn.style.pointerEvents = 'auto';
+        }
       }
     });
 
@@ -201,9 +220,16 @@ class WebsiteEnhancer {
         // Close mobile menu if open
         const navMenu = document.querySelector('.nav-menu');
         const hamburger = document.querySelector('.hamburger');
+        const backBtn = document.querySelector('.back-btn');
         if (navMenu.classList.contains('open')) {
           navMenu.classList.remove('open');
           hamburger.classList.remove('active');
+          
+          // Show back button when menu is closed
+          if (backBtn) {
+            backBtn.style.opacity = '1';
+            backBtn.style.pointerEvents = 'auto';
+          }
         }
       });
     });

@@ -37,6 +37,8 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
+      box-sizing: border-box;
+      word-wrap: break-word;
     }
 
     .project-card::before {
@@ -112,6 +114,10 @@
        font-weight: 600;
        transition: all 0.3s ease;
        text-decoration: none;
+       box-sizing: border-box;
+       word-wrap: break-word;
+       overflow-wrap: break-word;
+       white-space: normal;
      }
 
          .project-link:hover {
@@ -131,6 +137,8 @@
        display: flex;
        gap: 1rem;
        flex-wrap: wrap;
+       overflow: hidden;
+       box-sizing: border-box;
      }
 
      .project-links .project-link {
@@ -172,7 +180,7 @@
       border-radius: 8px;
       text-decoration: none;
       backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      transition: all 0.3s ease, opacity 0.3s ease;
       z-index: 1000;
     }
 
@@ -221,6 +229,9 @@
        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
        position: relative;
        overflow: hidden;
+       box-sizing: border-box;
+       word-wrap: break-word;
+       white-space: normal;
      }
 
      .index-category::before {
@@ -265,6 +276,8 @@
      .index-info {
        flex: 1;
        text-align: left;
+       overflow: hidden;
+       word-wrap: break-word;
      }
 
      .index-info h4 {
@@ -272,12 +285,18 @@
        font-weight: 600;
        color: #f5f5f5;
        margin: 0 0 0.25rem 0;
+       word-wrap: break-word;
+       overflow-wrap: break-word;
+       max-width: 100%;
      }
 
      .index-info p {
        font-size: 0.9rem;
        color: #bdbdbd;
        margin: 0;
+       word-wrap: break-word;
+       overflow-wrap: break-word;
+       max-width: 100%;
      }
 
      .index-category i.fa-chevron-right {
@@ -318,16 +337,22 @@
          padding: 0.3rem 0.6rem;
        }
 
-       .project-link {
-         width: 100%;
-         justify-content: center;
-         padding: 0.875rem 1.5rem;
-         font-size: 1rem;
-       }
+                .project-link {
+           width: 100%;
+           justify-content: center;
+           padding: 0.875rem 1.5rem;
+           font-size: 1rem;
+           box-sizing: border-box;
+           overflow: hidden;
+           word-wrap: break-word;
+           white-space: normal;
+         }
 
        .project-links {
          flex-direction: column;
          gap: 0.75rem;
+         overflow: hidden;
+         box-sizing: border-box;
        }
 
        .category-title {
@@ -359,10 +384,16 @@
 
        .index-info h4 {
          font-size: 1rem;
+         word-wrap: break-word;
+         overflow-wrap: break-word;
+         max-width: 100%;
        }
 
        .index-info p {
          font-size: 0.85rem;
+         word-wrap: break-word;
+         overflow-wrap: break-word;
+         max-width: 100%;
        }
 
        .projects-index {
@@ -772,23 +803,6 @@
     // Observe all fade-in elements
     document.querySelectorAll('.fade-in').forEach(el => {
       observer.observe(el);
-    });
-
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('open');
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('open');
-      });
     });
   </script>
 </body>
