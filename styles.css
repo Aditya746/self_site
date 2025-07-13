@@ -2106,3 +2106,699 @@ body::after {
     padding: 0.6rem 0.8rem;
   }
 }
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Ensure proper viewport scaling */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  /* General mobile improvements */
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Navigation improvements */
+  .nav-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .centered-menu {
+    width: 85vw;
+    padding: 6rem 1.5rem 2rem 1.5rem;
+  }
+
+  .centered-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+  }
+
+  .hamburger {
+    margin-right: 0.5rem;
+  }
+
+  .hamburger .bar {
+    width: 24px;
+    height: 3px;
+    margin: 5px 0;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .contact-top-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Hero section improvements */
+  .hero {
+    min-height: 70vh;
+    padding: 3rem 1rem 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  .hero-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-location {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  /* About section improvements */
+  .about-content {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .about-profile-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .profile-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .about-tags {
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Timeline improvements */
+  .timeline {
+    padding: 0 1rem;
+  }
+
+  .timeline-item {
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+
+  .timeline-date-marker {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+  }
+
+  .date-year {
+    font-size: 0.8rem;
+  }
+
+  .date-month {
+    font-size: 0.7rem;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .institution {
+    font-size: 0.9rem;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .credential-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Sub-experiences improvements */
+  .sub-experiences {
+    margin-top: 1rem;
+  }
+
+  .sub-experience-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sub-experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .sub-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .sub-info h4 {
+    font-size: 1rem;
+  }
+
+  .sub-date {
+    font-size: 0.8rem;
+  }
+
+  /* Contact section improvements */
+  .contact-content {
+    padding: 2rem 1rem;
+    margin: 0 1rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .contact-items {
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .contact-label {
+    font-size: 0.9rem;
+  }
+
+  .contact-value {
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+
+  .copy-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .contact-social-row {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .contact-social-btn {
+    width: 100%;
+    min-width: auto;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  /* Footer improvements */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .footer-text p {
+    font-size: 0.9rem;
+  }
+
+  .footer-social {
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Clock improvements */
+  .hero-clock {
+    top: 70px;
+    left: 10px;
+  }
+
+  .clock-time {
+    font-size: 0.9rem;
+  }
+
+  .clock-date {
+    font-size: 0.6rem;
+  }
+
+  .clock-container {
+    padding: 0.5rem 0.7rem;
+  }
+
+  /* Back button improvements */
+  .back-btn {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* Thesis button improvements */
+  .thesis-button-container {
+    margin-top: 1rem;
+  }
+
+  .thesis-btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    justify-content: center;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .timeline-date-marker {
+    width: 50px;
+    height: 50px;
+  }
+
+  .date-year {
+    font-size: 0.7rem;
+  }
+
+  .date-month {
+    font-size: 0.6rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1rem;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .contact-item {
+    padding: 0.75rem;
+  }
+
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .centered-menu {
+    width: 90vw;
+    padding: 5rem 1rem 2rem 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+}
+
+/* Landscape orientation improvements */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: 60vh;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: auto;
+    flex: 1;
+  }
+
+  .about-profile-section {
+    flex-direction: row;
+    text-align: left;
+    gap: 1.5rem;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .timeline-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .timeline-item {
+    padding: 1.5rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-item {
+    padding: 1.5rem;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Touch-friendly improvements for all devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure minimum touch target size (44px) */
+  .btn,
+  .nav-link,
+  .contact-social-btn,
+  .copy-btn,
+  .social-link,
+  .tag,
+  .credential-link,
+  .thesis-btn,
+  .hamburger {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn:hover,
+  .nav-link:hover,
+  .contact-social-btn:hover,
+  .copy-btn:hover,
+  .social-link:hover,
+  .tag:hover,
+  .credential-link:hover,
+  .thesis-btn:hover {
+    transform: none;
+  }
+
+  .btn:active,
+  .nav-link:active,
+  .contact-social-btn:active,
+  .copy-btn:active,
+  .social-link:active,
+  .tag:active,
+  .credential-link:active,
+  .thesis-btn:active {
+    transform: scale(0.95);
+  }
+
+  .timeline-item:hover,
+  .contact-item:hover,
+  .stat-card:hover {
+    transform: none;
+  }
+
+  .timeline-item:active,
+  .contact-item:active,
+  .stat-card:active {
+    transform: scale(0.98);
+  }
+
+  /* Improve touch scrolling */
+  .timeline,
+  .projects-grid,
+  .index-categories {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-icon,
+  .timeline-icon,
+  .contact-icon,
+  .social-link {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .particle,
+  .global-orb,
+  .hero-orb {
+    animation: none !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  /* Already dark theme, no changes needed */
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .hero-clock,
+  .scroll-indicator,
+  .back-btn,
+  .copy-btn,
+  .contact-social-row,
+  .footer-social {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .timeline-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .contact-item {
+    break-inside: avoid;
+  }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  .particle {
+    animation-duration: 15s;
+  }
+
+  .global-orb,
+  .hero-orb {
+    animation-duration: 8s;
+  }
+
+  /* Optimize background effects */
+  .hero-grid {
+    opacity: 0.3;
+  }
+
+  /* Reduce shadow complexity */
+  .project-card,
+  .timeline-item,
+  .contact-item {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Improve text readability */
+  .hero-title,
+  .section-title,
+  .timeline-content h3 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (max-width: 768px) {
+  /* Increase focus indicators */
+  .btn:focus,
+  .nav-link:focus,
+  .contact-social-btn:focus,
+  .copy-btn:focus,
+  .social-link:focus,
+  .tag:focus,
+  .credential-link:focus,
+  .thesis-btn:focus {
+    outline: 2px solid #b6a16b;
+    outline-offset: 2px;
+  }
+
+  /* Improve color contrast for small screens */
+  .contact-value,
+  .timeline-date,
+  .institution {
+    color: #e5e5e5;
+  }
+
+  /* Better spacing for touch targets */
+  .contact-item,
+  .timeline-item,
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+}
