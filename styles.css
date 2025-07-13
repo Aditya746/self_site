@@ -1409,23 +1409,26 @@ body::after {
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 4rem;
-  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-profile-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
 }
 
 .profile-image-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .profile-image {
@@ -1451,6 +1454,7 @@ body::after {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  flex: 1;
 }
 
 .about-text:hover {
@@ -1885,12 +1889,16 @@ body::after {
   }
   
   .about-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .about-profile-section {
-    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
   }
 
   .profile-image {
