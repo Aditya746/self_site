@@ -132,28 +132,102 @@
       <h2 class="section-title fade-in">
         <span class="gradient-text">About</span> Me
       </h2>
+      
       <div class="about-content">
         <div class="about-profile-section fade-in">
           <div class="profile-image-container">
             <img src="self_icon.jpeg" alt="Aditya Srivastava" class="profile-image" loading="lazy">
+            <div class="profile-glow"></div>
           </div>
-          <div class="about-text">
-            <p>Hi, I'm Aditya Srivastava, but you can call me Adi. 👋 </p>
-            <p>This website began as a late-night coding project, born out of curiosity and a love for creating something from scratch.</p>
-            <p>Originally from India, I now call Amsterdam, Netherlands, home. At 26, I'm an engineer by trade, but my interests stretch far beyond code. I'm fascinated by how things work— be it complex systems, or people, or places and the stories that connect them. Whether I'm diving into a video game, pushing my limits at the gym, or getting lost in the rich worlds of art, music and films, I'm driven by experiences that spark inspiration and growth.</p>
-            <p>Travel is my way of staying grounded and open. Exploring new cultures and perspectives is a reminder of how vast and varied the world is. I'm always up for trying something new, even if it means stumbling, laughing, and learning along the way.</p>
-            <p>As a tech enthusiast, I'm drawn to thoughtful design—not just in the products we create, but in the way we live with them. I believe in collaboration, creativity, and embracing adventure - one day at a time.</p>
-            <div class="about-tags">
-              <span class="tag"><i class="fas fa-shield-alt"></i> Technology</span>
-              <span class="tag"><i class="fas fa-rocket"></i> Performance</span>
-              <span class="tag"><i class="fas fa-users"></i> Management</span>
-              <span class="tag"><i class="fas fa-gamepad"></i> Gaming</span>
-              <span class="tag"><i class="fas fa-dumbbell"></i> Fitness</span>
-              <span class="tag"><i class="fas fa-music"></i> Music</span>
-              <span class="tag"><i class="fas fa-film"></i> Movies</span>
-              <span class="tag"><i class="fas fa-plane"></i> Travel</span>
+          
+          <div class="about-tabs-container">
+            <div class="tabs-header">
+              <button class="tab-btn active" data-tab="intro">
+                <i class="fas fa-hand-wave"></i>
+                <span>Intro</span>
+              </button>
+              <button class="tab-btn" data-tab="origin">
+                <i class="fas fa-rocket"></i>
+                <span>My Journey</span>
+              </button>
+              <button class="tab-btn" data-tab="background">
+                <i class="fas fa-user-graduate"></i>
+                <span>Beyond the Code</span>
+              </button>
+              <button class="tab-btn" data-tab="interests">
+                <i class="fas fa-heart"></i>
+                <span>Adventures & Exploration</span>
+              </button>
+            </div>
+            
+            <div class="tabs-content">
+              <div class="tab-content active" id="intro">
+                <div class="content-card">
+                  <div class="card-glow"></div>
+                  <h3>Hey! 👋</h3>
+                  <p>I'm Aditya Srivastava, but you can call me Adi. This website began as a late-night coding project, born out of curiosity and a love for creating something from scratch.</p>
+                  <p>As a tech enthusiast, I'm drawn to thoughtful design—not just in the products we create, but in the way we live with them. I believe in collaboration, creativity, and embracing adventure - one day at a time.</p>
+                </div>
+              </div>
+              
+              <div class="tab-content" id="origin">
+                <div class="content-card">
+                  <div class="card-glow"></div>
+                  <div class="content-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <h3>My Journey</h3>
+                  <p>Born and raised in India, I now call Amsterdam, Netherlands, home. At 26 years young, I'm an engineer by profession, but my interests stretch far beyond just tech and code. I'm fascinated by how things work— be it complex systems or people or places and the stories that connect them.</p>
+                </div>
+              </div>
+              
+              <div class="tab-content" id="background">
+                <div class="content-card">
+                  <div class="card-glow"></div>
+                  <div class="content-icon">
+                    <i class="fas fa-user-graduate"></i>
+                  </div>
+                  <h3>Beyond the Code</h3>
+                  <p>Whether I'm diving into a video game, pushing my limits at the gym, or getting lost in the rich worlds of art, music and films, I'm driven by experiences that spark inspiration and growth.</p>
+                </div>
+              </div>
+              
+              <div class="tab-content" id="interests">
+                <div class="content-card">
+                  <div class="card-glow"></div>
+                  <div class="content-icon">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  <h3>Adventures & Exploration</h3>
+                  <p>Travel is my way of staying grounded and open. Exploring new cultures and perspectives is a reminder of how vast and varied the world is. I'm always up for trying something new, even if it means stumbling, laughing, and learning along the way.</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spotify Section -->
+  <section id="spotify" class="spotify">
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="gradient-text">Music</span> Vibes
+      </h2>
+      <div class="spotify-content fade-in">
+        <p class="spotify-description">Here's what I'm currently listening to while coding and exploring new ideas:</p>
+        <div class="spotify-embed-container">
+          <iframe 
+            style="border-radius:12px" 
+            src="https://open.spotify.com/embed/playlist/4DewBGQDgAWYYMUy37JyLt?utm_source=generator&theme=0" 
+            width="100%" 
+            height="352" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+          </iframe>
         </div>
       </div>
     </div>

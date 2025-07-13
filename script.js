@@ -85,6 +85,7 @@ class WebsiteEnhancer {
       this.setupAccessibility();
       this.setupPerformanceOptimizations();
       this.setupClock();
+      this.setupAboutTabs();
       
       // Initialize navbar state
       this.handleNavbarScroll();
@@ -344,6 +345,29 @@ class WebsiteEnhancer {
         scrollTrigger: {
           trigger: '.about-stats',
           start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // About boxes animation
+    const aboutBoxes = document.querySelectorAll('.about-box');
+    gsap.fromTo(aboutBoxes,
+      {
+        opacity: 0,
+        y: 30,
+        scale: 0.95
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.about-text',
+          start: 'top 85%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -782,6 +806,91 @@ class WebsiteEnhancer {
       clockContainer.addEventListener('mouseleave', () => {
         clockContainer.style.transform = 'translateY(0) scale(1)';
       });
+    }
+  }
+
+  // About Tabs Functionality
+  setupAboutTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (!tabButtons.length || !tabContents.length) return;
+
+    const switchTab = (targetTab) => {
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to target button and content
+      const targetButton = document.querySelector(`[data-tab="${targetTab}"]`);
+      const targetContent = document.getElementById(targetTab);
+      
+      if (targetButton && targetContent) {
+        targetButton.classList.add('active');
+        targetContent.classList.add('active');
+        
+        // Add entrance animation to the active content
+        if (this.gsap) {
+          this.gsap.fromTo(targetContent, 
+            {
+              opacity: 0,
+              scale: 0.95,
+              y: 20
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out"
+            }
+          );
+        }
+      }
+    };
+
+    // Add click event listeners to tab buttons
+    tabButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetTab = button.getAttribute('data-tab');
+        switchTab(targetTab);
+        
+        // Add button click animation
+        if (this.gsap) {
+          this.gsap.to(button, {
+            scale: 0.95,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1
+          });
+        }
+      });
+      
+      // Add keyboard support
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const targetTab = button.getAttribute('data-tab');
+          switchTab(targetTab);
+        }
+      });
+    });
+
+    // Add intersection observer for scroll animations
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const aboutSection = document.querySelector('.about');
+      if (aboutSection) {
+        observer.observe(aboutSection);
+      }
     }
   }
 
