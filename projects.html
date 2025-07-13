@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Aditya Srivastava</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .projects-hero {
+      background: #0d0d0d;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .project-card:hover::before {
+      left: 100%;
+    }
+
+         .project-card:hover {
+       transform: translateY(-8px);
+       border-color: rgba(102, 102, 102, 0.3);
+       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+     }
+
+         .project-icon {
+       font-size: 2.5rem;
+       margin-bottom: 1rem;
+       color: #666666;
+       transition: transform 0.3s ease;
+     }
+
+    .project-card:hover .project-icon {
+      transform: scale(1.1);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #f5f5f5;
+    }
+
+    .project-description {
+      color: #bdbdbd;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+         .project-tag {
+       background: rgba(102, 102, 102, 0.2);
+       color: #999999;
+       padding: 0.25rem 0.75rem;
+       border-radius: 20px;
+       font-size: 0.8rem;
+       font-weight: 500;
+       border: 1px solid rgba(102, 102, 102, 0.3);
+     }
+
+         .project-link {
+       display: inline-flex;
+       align-items: center;
+       gap: 0.5rem;
+       background: linear-gradient(135deg, #444444 0%, #666666 100%);
+       color: #ffffff;
+       padding: 0.75rem 1.5rem;
+       border-radius: 8px;
+       font-weight: 600;
+       transition: all 0.3s ease;
+       text-decoration: none;
+     }
+
+         .project-link:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 20px rgba(102, 102, 102, 0.3);
+     }
+
+    .project-link i {
+      transition: transform 0.3s ease;
+    }
+
+         .project-link:hover i {
+       transform: translateX(3px);
+     }
+
+     .project-links {
+       display: flex;
+       gap: 1rem;
+       flex-wrap: wrap;
+     }
+
+     .project-links .project-link {
+       flex: 1;
+       min-width: 140px;
+       justify-content: center;
+     }
+
+     .category-section {
+      margin-bottom: 4rem;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #f5f5f5;
+      text-align: center;
+    }
+
+         .category-title::after {
+       content: '';
+       display: block;
+       width: 60px;
+       height: 3px;
+       background: linear-gradient(135deg, #444444 0%, #666666 100%);
+       margin: 1rem auto 0;
+       border-radius: 2px;
+     }
+
+    .back-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f5f5f5;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+         .back-btn:hover {
+       background: rgba(102, 102, 102, 0.2);
+       border-color: #666666;
+       transform: translateX(-3px);
+     }
+
+     /* Projects Index Styles */
+     .projects-index {
+       padding: 3rem 0;
+       background: rgba(255, 255, 255, 0.02);
+       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+     }
+
+     .index-content {
+       text-align: center;
+     }
+
+     .index-title {
+       font-size: 1.5rem;
+       font-weight: 600;
+       color: #f5f5f5;
+       margin-bottom: 2rem;
+     }
+
+     .index-categories {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       gap: 1.5rem;
+       max-width: 900px;
+       margin: 0 auto;
+     }
+
+     .index-category {
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+       background: rgba(255, 255, 255, 0.05);
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       border-radius: 12px;
+       padding: 1.5rem;
+       text-decoration: none;
+       color: inherit;
+       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+       position: relative;
+       overflow: hidden;
+     }
+
+     .index-category::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: -100%;
+       width: 100%;
+       height: 100%;
+       background: linear-gradient(90deg, transparent, rgba(102, 102, 102, 0.1), transparent);
+       transition: left 0.5s;
+     }
+
+     .index-category:hover::before {
+       left: 100%;
+     }
+
+     .index-category:hover {
+       transform: translateY(-4px);
+       border-color: rgba(102, 102, 102, 0.3);
+       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+     }
+
+     .index-icon {
+       width: 50px;
+       height: 50px;
+       background: linear-gradient(135deg, #444444 0%, #666666 100%);
+       border-radius: 12px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-size: 1.5rem;
+       color: #ffffff;
+       flex-shrink: 0;
+       transition: transform 0.3s ease;
+     }
+
+     .index-category:hover .index-icon {
+       transform: scale(1.1);
+     }
+
+     .index-info {
+       flex: 1;
+       text-align: left;
+     }
+
+     .index-info h4 {
+       font-size: 1.1rem;
+       font-weight: 600;
+       color: #f5f5f5;
+       margin: 0 0 0.25rem 0;
+     }
+
+     .index-info p {
+       font-size: 0.9rem;
+       color: #bdbdbd;
+       margin: 0;
+     }
+
+     .index-category i.fa-chevron-right {
+       color: #666666;
+       font-size: 0.9rem;
+       transition: transform 0.3s ease;
+     }
+
+     .index-category:hover i.fa-chevron-right {
+       transform: translateX(3px);
+     }
+
+          @media (max-width: 768px) {
+       .projects-grid {
+         grid-template-columns: 1fr;
+         gap: 1.5rem;
+       }
+
+       .project-card {
+         padding: 1.5rem;
+       }
+
+       .back-btn {
+         top: 1rem;
+         left: 1rem;
+         padding: 0.5rem 0.75rem;
+         font-size: 0.9rem;
+       }
+
+       .index-categories {
+         grid-template-columns: 1fr;
+         gap: 1rem;
+       }
+
+       .index-category {
+         padding: 1.25rem;
+       }
+
+       .index-icon {
+         width: 45px;
+         height: 45px;
+         font-size: 1.3rem;
+       }
+     }
+  </style>
+</head>
+<body>
+  <!-- Global Background Elements -->
+  <div class="global-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <div class="global-orb"></div>
+  <div class="global-orb"></div>
+  <div class="global-orb"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-menu centered-menu" aria-hidden="false">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="education.html" class="nav-link">Education</a></li>
+        <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a
+          href="https://www.linkedin.com/in/adityans17/"
+          class="linkedin-btn"
+          target="_blank"
+          title="Connect on LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary contact-top-btn">Contact</a>
+      </div>
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Back to Home
+  </a>
+
+  <!-- Projects Hero Section -->
+  <section class="projects-hero">
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    
+    <div class="hero-content animate-on-load">
+      <div class="hero-icon animate-icon">
+        <i class="fas fa-code-branch"></i>
+      </div>
+      <h1 class="hero-title animate-title">
+        <span class="gradient-text">My Projects</span>
+      </h1>
+      <p class="hero-subtitle animate-subtitle">A collection of tools, games, and creative projects</p>
+      <p class="hero-description animate-description">Explore interactive applications built with modern web technologies</p>
+    </div>
+  </section>
+
+  <!-- Projects Index -->
+  <section class="projects-index">
+    <div class="container">
+      <div class="index-content fade-in">
+        <h3 class="index-title">Quick Navigation</h3>
+        <div class="index-categories">
+          <a href="#research" class="index-category">
+            <div class="index-icon">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <div class="index-info">
+              <h4>Research & Academic</h4>
+              <p>1 project</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="#games" class="index-category">
+            <div class="index-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="index-info">
+              <h4>Games & Interactive</h4>
+              <p>3 projects</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="#tools" class="index-category">
+            <div class="index-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <div class="index-info">
+              <h4>Tools & Utilities</h4>
+              <p>4 projects</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="#creative" class="index-category">
+            <div class="index-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="index-info">
+              <h4>Creative & Visual</h4>
+              <p>1 project</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Content -->
+  <section class="projects-content">
+    <div class="container">
+      <!-- Research & Academic Section -->
+      <div id="research" class="category-section">
+        <h2 class="category-title">🔬 Research & Academic</h2>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <h3 class="project-title">Partially Reliable Transport and QUIC: Web Applications</h3>
+            <p class="project-description">This thesis research project investigates the performance of web applications and network protocols, focusing on TCP and QUIC, with an emphasis on implementing Partially Reliable Transport (PRT) for efficient web content delivery.</p>
+            <div class="project-tags">
+              <span class="project-tag">Research</span>
+              <span class="project-tag">Network Protocols</span>
+              <span class="project-tag">QUIC</span>
+              <span class="project-tag">TCP</span>
+              <span class="project-tag">Web Performance</span>
+            </div>
+            <div class="project-links">
+              <a href="Msc_thesis_Aditya.pdf" class="project-link" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+                View Thesis
+              </a>
+              <a href="https://github.com/Aditya746/partial-rel-web" class="project-link" target="_blank">
+                <i class="fab fa-github"></i>
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Games Section -->
+      <div id="games" class="category-section">
+        <h2 class="category-title">🎮 Games & Interactive</h2>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h3 class="project-title">Ping Pong Game</h3>
+            <p class="project-description">A classic ping pong game built with HTML5 Canvas and JavaScript. Features smooth animations, score tracking, and responsive controls.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5 Canvas</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Game Development</span>
+            </div>
+            <a href="projects/ping-pong.html" class="project-link" target="_blank">
+              Play Game <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-times"></i>
+            </div>
+            <h3 class="project-title">Tic Tac Toe</h3>
+            <p class="project-description">A modern implementation of the classic Tic Tac Toe game with clean UI, game state management, and win detection.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">Game Logic</span>
+            </div>
+            <a href="projects/tic-tac-toe.html" class="project-link" target="_blank">
+              Play Game <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-cookie-bite"></i>
+            </div>
+            <h3 class="project-title">Fortune Cookie Generator</h3>
+            <p class="project-description">Generate random fortunes and wisdom with this interactive fortune cookie application. Features beautiful animations and inspiring messages.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">CSS Animations</span>
+              <span class="project-tag">Random Generation</span>
+            </div>
+            <a href="projects/fortune-cookie-generator.html" class="project-link" target="_blank">
+              Get Fortune <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+             <!-- Tools Section -->
+       <div id="tools" class="category-section">
+         <h2 class="category-title">🛠️ Tools & Utilities</h2>
+        <div class="projects-grid">
+
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <h3 class="project-title">Stopwatch</h3>
+            <p class="project-description">A precise stopwatch application with start, stop, reset, and lap functionality. Perfect for timing activities.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Timer Logic</span>
+              <span class="project-tag">User Interface</span>
+            </div>
+            <a href="projects/stopWatch.html" class="project-link" target="_blank">
+              Use Stopwatch <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="project-title">Interactive Calendar</h3>
+            <p class="project-description">A comprehensive calendar application with month navigation, date selection, and event management capabilities.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Date Handling</span>
+              <span class="project-tag">Interactive UI</span>
+            </div>
+            <a href="projects/calendar.html" class="project-link" target="_blank">
+              Open Calendar <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-key"></i>
+            </div>
+            <h3 class="project-title">Random Password Generator</h3>
+            <p class="project-description">Generate secure passwords with customizable length and character types. Features copy-to-clipboard functionality.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Security</span>
+              <span class="project-tag">Clipboard API</span>
+            </div>
+            <a href="projects/randomPassword.html" class="project-link" target="_blank">
+              Generate Password <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="project-title">IP Address Checker</h3>
+            <p class="project-description">A simple tool to display your current IP address and network information.</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Network Info</span>
+              <span class="project-tag">API Integration</span>
+            </div>
+            <a href="projects/ip.html" class="project-link" target="_blank">
+              Check IP <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+             <!-- Creative Projects Section -->
+       <div id="creative" class="category-section">
+         <h2 class="category-title">🎨 Creative & Visual</h2>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-planet-ringed"></i>
+            </div>
+            <h3 class="project-title">Solar System</h3>
+            <p class="project-description">An animated solar system visualization with rotating planets and realistic orbital mechanics.</p>
+            <div class="project-tags">
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">Animations</span>
+              <span class="project-tag">3D Effects</span>
+            </div>
+            <a href="projects/solar-system.html" class="project-link" target="_blank">
+              View Solar System <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content fade-in">
+        <div class="footer-text">
+          <p>&copy; 2025 Aditya Srivastava. All rights reserved.</p>
+          <p>Made with <i class="fas fa-heart"></i> by Adi</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/adityans17/" class="social-link" target="_blank" title="Connect on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Aditya746" class="social-link" target="_blank" title="View GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

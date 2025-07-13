@@ -7,14 +7,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .education-hero {
+      background: #0d0d0d;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f5f5f5;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-btn:hover {
+      background: rgba(182, 161, 107, 0.2);
+      border-color: #b6a16b;
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <ul class="nav-menu centered-menu">
+      <ul class="nav-menu centered-menu" aria-hidden="false">
         <li><a href="index.html#home" class="nav-link">Home</a></li>
         <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="experience.html" class="nav-link">Experience</a></li>
         <li><a href="education.html" class="nav-link active">Education</a></li>
         <li><a href="certifications.html" class="nav-link">Certifications</a></li>
@@ -30,7 +75,7 @@
         </a>
         <a href="index.html#contact" class="btn btn-primary contact-top-btn">Contact</a>
       </div>
-      <div class="hamburger">
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -38,12 +83,45 @@
     </div>
   </nav>
 
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Back to Home
+  </a>
+
+  <!-- Education Hero Section -->
+  <section class="education-hero">
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    
+    <div class="hero-content animate-on-load">
+      <div class="hero-icon animate-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h1 class="hero-title animate-title">
+        <span class="gradient-text">My Education</span>
+      </h1>
+      <p class="hero-subtitle animate-subtitle">Academic journey and achievements</p>
+      <p class="hero-description animate-description">From foundational studies to advanced research in computer science</p>
+    </div>
+  </section>
+
   <!-- Education Section -->
   <section class="education">
     <div class="container">
-      <h1 class="section-title animate-on-load">
-        My <span class="gradient-text">Education</span>
-      </h1>
       <div class="timeline-container">
         <div class="timeline">
           <!-- Master's Degree (Joint) -->

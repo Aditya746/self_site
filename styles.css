@@ -1583,6 +1583,12 @@ body::after {
   backdrop-filter: blur(10px);
 }
 
+.contact-item > div:nth-child(2) {
+  position: relative;
+  flex: 1;
+  padding-right: 3.5rem;
+}
+
 .contact-item:hover {
   transform: translateX(10px);
   background: #333;
@@ -1639,7 +1645,10 @@ body::after {
   justify-content: center;
   min-width: 2.5rem;
   height: 2.5rem;
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   overflow: hidden;
 }
 
