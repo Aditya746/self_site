@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miscellaneous | Aditya Srivastava</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Global Background Elements -->
+  <div class="global-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <div class="global-orb"></div>
+  <div class="global-orb"></div>
+  <div class="global-orb"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-menu centered-menu" aria-hidden="false">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="education.html" class="nav-link">Education</a></li>
+        <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+        <li><a href="misc.html" class="nav-link active">Miscellaneous</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://www.linkedin.com/in/adityans17/" class="linkedin-btn" target="_blank" title="Connect on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="index.html#contact" class="btn btn-primary contact-top-btn">Contact</a>
+      </div>
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title fade-in">
+        <span class="gradient-text">Miscellaneous</span>
+      </h2>
+      <div class="about-content">
+        <div class="about-profile-section fade-in" style="width:100%;justify-content:center;">
+          <div class="about-tabs-container" style="width:100%;max-width:600px;margin:auto;">
+            <div class="content-card">
+              <div class="card-glow"></div>
+              <div class="content-icon">
+                <i class="fas fa-coins"></i>
+              </div>
+              <h3>Currency Exchange Rates</h3>
+              <p>Get the latest exchange rates for INR, USD, EUR, BTC, ETH, SGD, and AUD.</p>
+              <form id="currency-form" class="currency-form">
+                <label for="base-currency" style="font-weight:600; display:block; margin-bottom:0.5em;">Base Currency:</label>
+                <select id="base-currency" style="width:100%; margin-bottom:1em;"></select>
+                <label for="amount" style="font-weight:600; display:block; margin-bottom:0.5em;">Amount:</label>
+                <input id="amount" name="amount" type="number" min="0" step="any" value="1" required style="width:100%; margin-bottom:1em;" />
+                <button type="submit" class="btn btn-primary" style="width:100%;">Convert</button>
+              </form>
+              <div id="currency-widget">
+                <div class="currency-loading"><span class="currency-spinner"></span>Loading exchange rates...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content fade-in">
+        <div class="footer-text">
+          <p>&copy; 2025 Aditya Srivastava. All rights reserved.</p>
+          <p>Made with <i class="fas fa-heart"></i> by Adi</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/adityans17/" class="social-link" target="_blank" title="Connect on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Aditya746" class="social-link" target="_blank" title="View GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Currency Widget Logic for misc.html
+    const ALLOWED_CURRENCIES = ["inr","usd","eur","btc","eth","sgd","aud","gbp"];
+    let currencyNames = {};
+
+    function fetchCurrencyList() {
+      // Get all available currencies and their names
+      const url = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json";
+      return fetch(url)
+        .then(r => r.json())
+        .then(data => {
+          currencyNames = data;
+        });
+    }
+
+    function renderBaseCurrencyOptions(selected) {
+      const select = document.getElementById('base-currency');
+      select.innerHTML = '';
+      ALLOWED_CURRENCIES.forEach(code => {
+        const opt = document.createElement('option');
+        opt.value = code;
+        opt.textContent = `${code.toUpperCase()} - ${currencyNames[code]}`;
+        if (code === selected) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    function fetchAndRenderRates(base, amount) {
+      const widget = document.getElementById('currency-widget');
+      if (!widget) return;
+      widget.innerHTML = '<div class="currency-loading"><span class="currency-spinner"></span>Loading exchange rates...</div>';
+      const mainUrl = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${base}.json`;
+      const fallbackUrl = `https://latest.currency-api.pages.dev/v1/currencies/${base}.json`;
+      function renderRates(data) {
+        if (!data || !data[base]) throw new Error('No data');
+        const rates = data[base];
+        // Only show allowed currencies, skip base
+        const filtered = Object.entries(rates).filter(([code]) =>
+          ALLOWED_CURRENCIES.includes(code) && code !== base
+        );
+        // Sort alphabetically
+        filtered.sort((a, b) => a[0].localeCompare(b[0]));
+        let html = '<div style="overflow-x:auto;"><table class="currency-table"><thead><tr><th>Currency</th><th>Rate</th><th>Converted</th></tr></thead><tbody>';
+        for (const [code, value] of filtered) {
+          html += `<tr><td>${code.toUpperCase()} - ${currencyNames[code] || code}</td><td>${value}</td><td>${(parseFloat(value) * amount).toLocaleString(undefined, {maximumFractionDigits: 6})}</td></tr>`;
+        }
+        html += '</tbody></table></div>';
+        widget.innerHTML = html;
+      }
+      fetch(mainUrl)
+        .then(r => r.json())
+        .then(renderRates)
+        .catch(() => {
+          fetch(fallbackUrl)
+            .then(r => r.json())
+            .then(renderRates)
+            .catch(() => {
+              widget.innerHTML = '<div class="currency-loading">Unable to load exchange rates.</div>';
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchCurrencyList().then(() => {
+        renderBaseCurrencyOptions('eur');
+        fetchAndRenderRates('eur', 1);
+        document.getElementById('currency-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const base = document.getElementById('base-currency').value;
+          const amount = parseFloat(document.getElementById('amount').value) || 1;
+          fetchAndRenderRates(base, amount);
+        });
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -914,3 +914,75 @@ const websiteEnhancer = new WebsiteEnhancer();
 
 // Export for potential external use
 window.WebsiteEnhancer = WebsiteEnhancer;
+
+function fetchCurrencyRates() {
+  const widget = document.getElementById('currency-widget');
+  if (!widget) return;
+  widget.innerHTML = '<div class="currency-loading">Loading exchange rates...</div>';
+
+  const mainUrl = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json';
+  const fallbackUrl = 'https://latest.currency-api.pages.dev/v1/currencies/eur.json';
+
+  function renderRates(data) {
+    if (!data || !data.eur) throw new Error('No data');
+    const rates = data.eur;
+    // Sort by value descending, show top 10
+    const top = Object.entries(rates)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+    let html = '<table class="currency-table"><thead><tr><th>Currency</th><th>Rate (per EUR)</th></tr></thead><tbody>';
+    for (const [code, value] of top) {
+      html += `<tr><td>${code.toUpperCase()}</td><td>${value}</td></tr>`;
+    }
+    html += '</tbody></table>';
+    widget.innerHTML = html;
+  }
+
+  fetch(mainUrl)
+    .then(r => r.json())
+    .then(renderRates)
+    .catch(() => {
+      fetch(fallbackUrl)
+        .then(r => r.json())
+        .then(renderRates)
+        .catch(() => {
+          widget.innerHTML = '<div class="currency-loading">Unable to load exchange rates.</div>';
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const weatherWidget = document.getElementById('weather-widget');
+  if (!weatherWidget) return;
+
+  // Amsterdam coordinates
+  const lat = 52.37;
+  const lon = 4.89;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&timezone=auto`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.current) throw new Error("No weather data");
+      const temp = data.current.temperature_2m;
+      const wind = data.current.wind_speed_10m;
+
+      // Simple icon logic
+      let icon = "☀️";
+      if (temp < 5) icon = "❄️";
+      else if (temp < 15) icon = "🌥️";
+      else if (temp > 25) icon = "🔥";
+
+      weatherWidget.innerHTML = `
+        <div class="weather-icon">${icon}</div>
+        <div class="weather-temp">${temp.toFixed(1)}°C</div>
+        <div class="weather-meta">Wind: ${wind.toFixed(1)} km/h</div>
+        <div class="weather-meta">Amsterdam</div>
+      `;
+    })
+    .catch(err => {
+      weatherWidget.innerHTML = `<div class="weather-loading">Weather unavailable</div>`;
+    });
+
+  fetchCurrencyRates();
+});
