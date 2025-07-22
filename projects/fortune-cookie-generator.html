@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -443,7 +443,7 @@
                 
                 setTimeout(() => {
                     // Update message
-                    message.innerHTML = newFortune;
+                    message.textContent = newFortune;
                     message.classList.add('show');
                     
                     // Update stats
@@ -539,161 +539,4 @@
                 case 28:
                     return `${startingPhrase()} only those who dare to be ${personality()} get ${fortune()}.`;
                 case 29:
-                    return `The ${personality()} will get ${virtue()}.`;
-                case 30:
-                    return `${time()} a ${character()} will give you ${fortune()}.`
-                case 31:
-                    itm = item();
-                    return `You will sell ${article(itm)} ${itm} for ${fortune()}.`;
-                case 32:
-                    person = personality();
-                    itm = item();
-                    return `${time()} ${article(person)} ${person} ${character()} will give you ${article(itm)} ${itm}.`;
-                case 33:
-                    char = character();
-                    itm = item();
-                    return `Give ${article(char)} ${char} in need some ${itm}.`;
-                case 34:
-                    return `${startingPhrase()} ${fortune()} is worth more than some ${item()}.`;
-                case 35:
-                    char = character();
-                    return `${time()} ${article(char)} ${char} will steal your ${item()}.`;
-                case 36:
-                    return `The ${personality()} shall inherit the ${fortune()}.`;
-            }
-        }
-
-        function randomNumber(choiceNum) {
-            let rng = Math.random();
-            let rn = Math.floor(rng * choiceNum);
-            return rn;
-        }
-
-        function selectFromList(list) {
-            let options = list.length;
-            let number = randomNumber(options);
-            return list[number];
-        }
-
-        function article(word) {
-            let vowelRegex = '^[aieou].*';
-            let isVowel = word.match(vowelRegex);
-            return isVowel ? 'an' : 'a';
-        }
-
-        function startingPhrase() {
-            const LIST = [
-                'It is known that', 'Remember,', 'A wise old man once said:', 'As a matter of fact,', 'I hate to say this, but',
-                'There\'s no denying that', 'An old chinese proverb says:', 'By the way,'
-            ];
-            return selectFromList(LIST);
-        }
-
-        function virtue() {
-            const LIST = [
-                'wisdom', 'temperance', 'justice', 'humour', 'dignity',
-                'mercy', 'gravity', 'humanity', 'selflessness', 'nobility',
-                'chastity', 'temperance', 'charity', 'diligence', 'patience',
-                'kindness', 'humility', 'sincerity', 'tranquility', 'empathy',
-                'beauty',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function vice() {
-            const LIST = [
-                'anger', 'arrogance', 'envy', 'gluttony', 'greed',
-                'lust', 'sloth', 'cowardice', 'disloyalty', 'doubt',
-                'injustice', 'jelousy', 'vanity', 'wrath',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function misfortune() {
-            const LIST = [
-                'sickness', 'poverty', 'disaster', 'taxes', 'inequality',
-                'war', 'conflict', 'hunger', 'trouble', 'drough',
-                'plague', 'crime', 'unhappiness', 'misfortune',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function fortune() {
-            const LIST = [
-                'fortune', 'wealth', 'love', 'friendship', 'cookies',
-                'happiness', 'joy', 'gold', 'bitcoins',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function time() {
-            const LIST = [
-                'Today', 'Tomorrow', 'Soon', 'Sometime', 'In the year of the ' + chineseHoroscope(),
-            ];
-            return selectFromList(LIST);
-        }
-
-        function chineseHoroscope() {
-            const LIST = [
-                'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake',
-                'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function personality() {
-            const LIST = [
-                'adventurous', 'alert', 'athletic', 'balanced', 'brilliant',
-                'calm', 'caring', 'charismatic', 'clever', 'creative',
-                'curious', 'daring', 'dramatic', 'educated', 'empathetic',
-                'fair', 'friendly', 'gentle', 'hardworking', 'happy',
-                'humourous', 'kind', 'liberal', 'logical', 'mature',
-                'loyal', 'modest', 'organized', 'patriotic', 'perfectionist',
-                'popular', 'protective', 'relaxed', 'strong', 'sweet',
-                'wise', 'agressive', 'ambitious', 'amusing', 'busy',
-                'casual', 'complex', 'cute', 'invisible', 'political',
-                'tough', 'unpatriotic', 'angry', 'anxious', 'barbaric',
-                'crazy', 'cruel', 'cynical', 'dirty', 'dogmatic',
-                'foolish', 'gloomy', 'grim', 'hostile', 'lazy',
-                'odd', 'paranoid', 'shy', 'stupid', 'weak',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function character() {
-            const LIST = [
-                'person', 'man', 'woman', 'boy', 'girl',
-                'child', animal(),
-            ];
-            return selectFromList(LIST);
-        }
-
-        function animal() {
-            const LIST = [
-                'dolphin', 'cat', 'dog', 'giraffe', 'red panda',
-                'wolf', 'tiger', 'elephant', 'monkey', 'horse',
-                'panda', 'turtle', 'penguin',
-            ];
-            return selectFromList(LIST);
-        }
-
-        function item() {
-            const LIST = [
-                'book', 'coin', 'sword', 'fortune cookie', 'cup',
-                'silk', 'camera', 'pen', 'scroll', 'ring',
-                'toilet paper', 'ball', 'bell', 'drink', 'hammer',
-                'essay', 'cheese', 'food',
-            ];
-            return selectFromList(LIST);
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show initial message with animation
-            setTimeout(() => {
-                document.getElementById('message').classList.add('show');
-            }, 500);
-        });
-    </script>
-</body>
-</html>
+                    return `
