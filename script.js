@@ -955,34 +955,65 @@ document.addEventListener('DOMContentLoaded', function() {
   const weatherWidget = document.getElementById('weather-widget');
   if (!weatherWidget) return;
 
-  // Amsterdam coordinates
-  const lat = 52.37;
-  const lon = 4.89;
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&timezone=auto`;
+  function fetchWeather(lat, lon, cityName) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&timezone=auto`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.current) throw new Error("No weather data");
+        const temp = data.current.temperature_2m;
+        const wind = data.current.wind_speed_10m;
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      if (!data.current) throw new Error("No weather data");
-      const temp = data.current.temperature_2m;
-      const wind = data.current.wind_speed_10m;
+        // Simple icon logic
+        let icon = "☀️";
+        if (temp < 5) icon = "❄️";
+        else if (temp < 15) icon = "🌥️";
+        else if (temp > 25) icon = "🔥";
 
-      // Simple icon logic
-      let icon = "☀️";
-      if (temp < 5) icon = "❄️";
-      else if (temp < 15) icon = "🌥️";
-      else if (temp > 25) icon = "🔥";
+        weatherWidget.innerHTML = `
+          <div class="weather-icon">${icon}</div>
+          <div class="weather-temp">${temp.toFixed(1)}°C</div>
+          <div class="weather-meta">Wind: ${wind.toFixed(1)} km/h</div>
+          <div class="weather-meta">${cityName}</div>
+        `;
+      })
+      .catch(err => {
+        weatherWidget.innerHTML = `<div class="weather-loading">Weather unavailable</div>`;
+      });
+  }
 
-      weatherWidget.innerHTML = `
-        <div class="weather-icon">${icon}</div>
-        <div class="weather-temp">${temp.toFixed(1)}°C</div>
-        <div class="weather-meta">Wind: ${wind.toFixed(1)} km/h</div>
-        <div class="weather-meta">Amsterdam</div>
-      `;
-    })
-    .catch(err => {
-      weatherWidget.innerHTML = `<div class="weather-loading">Weather unavailable</div>`;
-    });
+  function reverseGeocode(lat, lon, callback) {
+    // Use OpenStreetMap Nominatim for free reverse geocoding
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+      .then(res => res.json())
+      .then(data => {
+        const city = data.address?.city || data.address?.town || data.address?.village || data.address?.state || 'Your Location';
+        callback(city);
+      })
+      .catch(() => {
+        callback('Your Location');
+      });
+  }
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        reverseGeocode(lat, lon, cityName => {
+          fetchWeather(lat, lon, cityName);
+        });
+      },
+      error => {
+        // Fallback to Amsterdam
+        fetchWeather(52.37, 4.89, 'Amsterdam');
+      },
+      {timeout: 5000}
+    );
+  } else {
+    // Fallback to Amsterdam
+    fetchWeather(52.37, 4.89, 'Amsterdam');
+  }
 
   fetchCurrencyRates();
 });
