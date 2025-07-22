@@ -168,7 +168,7 @@ class WebsiteEnhancer {
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+      if (!e.target.closest('.nav-menu, .hamburger')) {
         hamburger.classList.remove('active');
         navMenu.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
